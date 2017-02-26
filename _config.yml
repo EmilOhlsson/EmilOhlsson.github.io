@@ -1,0 +1,17 @@
+title: Postponed adventures
+email: kotte@kottland.net
+description: >
+    Some random notes about stuff.
+baseurl: ""
+url: "https://elektrokotte.github.io"
+twitter_username: elektrokotte
+github_username:  elektrokotte
+
+# Build settings
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
