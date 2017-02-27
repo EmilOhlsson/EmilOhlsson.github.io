@@ -2,11 +2,12 @@
 layout: post
 title:  "Generator macros patterns in C"
 date:   2017-02-26 21:45:46 +0100
+author: Emil Ohlsson
 categories: c macros
 ---
 Usually I don't like to use macros in C. Mostly because it's fairly easy to
 obfuscate what the code does, and I would argue that the reason for choosing C
-is to be able to roughly what each line translates to. However, macros also
+is to be able to roughly see what each line translates to. However, macros also
 allow you to implement solutions that are otherwise hard to do, or very error
 prone.
 
