@@ -7,7 +7,9 @@ categories: c macros
 ---
 Error handling in C is always something that have bothered me a bit. For code
 that handles allocated resources it is particularly hard. If you don't have any
-allocated resources a good approach is usually something in the lines of
+allocated resources a good approach is usually something in the lines of the
+example below.
+
 ```c
 error_e function(void *param)
 {
@@ -22,10 +24,12 @@ error_e function(void *param)
     return ERROR_OK;
 }
 ```
+
 For code where you don't have anything allocated it is usually best to only do
 an early return. Perhaps log some error, but not much more. But as soon as you
 start to handling allocated resources, such as semaphores and memory, this
 quickly become bothersome.
+
 ```c
 error_e function(stuff_t *handle)
 {
@@ -51,6 +55,7 @@ error_e function(stuff_t *handle)
     return ERROR_LOCK;
 }
 ```
+
 Even with two resources this become rather clunky to work with. And consider if
 there is some feature addition which requires an additional resource to be
 allocated. That would be really nasty to work with. There are ways to work
@@ -60,6 +65,7 @@ A very simple solution is to use `goto`. A lot of people consider `goto` to be
 bad practice. My view is that if it make the code more readable, then by all
 means use `goto`. If it makes the code less readable, use something else. A
 common usage for `goto` is something like the example below.
+
 ```c
 error_e function(stuff_t *handle)
 {
@@ -93,12 +99,14 @@ on_error:
     return error;
 }
 ```
+
 Might be a bit more code, but it is easier to read, and easier to spot missing
 resource deallocations. It is also less nested.
 
 A _gcc_ extension allows the programmer to register a cleanup function for a
 variable, which can look kind of weird. But it allows the compiler to deallocate
 resources for you.
+
 ```c
 static void my_free(int **p)
 {
@@ -110,6 +118,7 @@ void function(void)
     int __attribute__((cleanup(cleanup))) *val = malloc(sizeof(int));
 }
 ```
+
 Of course you can hide this monstrosity behind some kind of macro. For example
 the Jansson JSON C library probably does something like this, and I've seen
 other code bases use this approach as well. If you are not used to it then it is
@@ -123,6 +132,7 @@ a bug. All you need is a function that takes a stack, and pushes an entry to it,
 and a macro that creates entry information for you.
 
 So, by using the following macro:
+
 ```c
 #define ERR_GOTO_NEW(handler, var, code)                   \
     do {                                                   \
@@ -136,7 +146,9 @@ So, by using the following macro:
         goto handler                       \
     } while (0)
 ```
+
 Then you can implement your error handling like this
+
 ```c
 err_t *fun_a(void)
 {
@@ -165,6 +177,7 @@ on_error:
     return err;
 }
 ```
+
 It requires a little bit of setup in you code base, but the upside is that it
 allows you to trace back your error through the call stack. I've added a more
 complete example on [GitHub][github].
