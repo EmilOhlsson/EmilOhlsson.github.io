@@ -6,8 +6,8 @@ email: kotte@kottland.net
 description: >
     Occasional posts about programming... I think... Let's see
 baseurl: ""
-url: "https://elektrokotte.github.io"
-github_username:  elektrokotte
+url: "https://emilohlsson.github.io"
+github_username:  EmilOhlsson
 
 # Build settings
 markdown: kramdown
