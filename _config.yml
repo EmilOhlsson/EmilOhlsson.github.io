@@ -12,8 +12,9 @@ github_username:  EmilOhlsson
 # Build settings
 markdown: kramdown
 theme: minima
-gems:
+plugins:
   - jekyll-feed
 exclude:
   - Gemfile
   - Gemfile.lock
+  - node_modules
