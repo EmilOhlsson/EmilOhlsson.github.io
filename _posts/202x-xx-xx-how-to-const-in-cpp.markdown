@@ -58,6 +58,11 @@ want to use `static constexpr` instead.
 For header constants you want to use `inline constexpr` instead. This will tell
 the linker that same definition can exist in multiple files, and will be merged.
 
+## Using `std::span` with const data
+As `std::span` is part of the STL, and not part of the language, you need to
+indicate `const`ness in another way, and this is by using `std::span<const
+Type>`
+
 [instead of constexpr]: <link to C++ weekly>
 [a link]: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 [implicit rules]: https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html
