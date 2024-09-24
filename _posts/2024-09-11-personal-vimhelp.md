@@ -3,7 +3,7 @@ layout: post
 title:  "Personal vimhelp"
 date:   2024-09-11
 author: Emil Ohlsson
-categories: documentatino
+categories: documentation
 ---
 I've been using vim and neovim for several years, and over the time I've
 accumulated several useful plugins. I do try to keep the amount of plugins to a
