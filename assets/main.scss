@@ -1,0 +1,9 @@
+---
+---
+
+// Theme is based on minima, but with some modifications
+$background-color: #fdf6e3;
+$code-background: darken($background-color, 5%);
+
+// Include minima theme
+@import "minima";
