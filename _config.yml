@@ -14,7 +14,15 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  
+# Exclude these files from being processed by Jekyll
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - vendor
+  - .sass-cache
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
